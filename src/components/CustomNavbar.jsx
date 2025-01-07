@@ -36,7 +36,7 @@ const CustomNavbar = () => {
             <nav className='bg-white shadow-orange shadow-orange-400 text-black h-14 px-3 my-3 mx-8 rounded-full flex justify-between items-center'>
                 <div className='brand'>
                     <h1 className='font-bold font-serif text-2xl text-gray-800 hover:text-orange-500 p-2 rounded-md'>
-                        <a href="/">Work Manager</a>
+                        <Link href="/">Work Manager</Link>
                     </h1>
                 </div>
 
