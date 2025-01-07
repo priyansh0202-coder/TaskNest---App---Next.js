@@ -1,5 +1,6 @@
 "use client"
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function HomePage() {
     const containerVariants = {
@@ -76,11 +77,16 @@ export default function HomePage() {
                 variants={bgVariants}
                 animate="animate"
             >
-                <img
+
+                <Image
                     src="https://images.pexels.com/photos/2538089/pexels-photo-2538089.jpeg"
                     alt="Background"
                     className="w-full h-full object-cover opacity-30"
+                    layout="fill"
+                    objectFit="cover"
+                    quality={100}
                 />
+
             </motion.div>
 
             <motion.h1
@@ -106,7 +112,7 @@ export default function HomePage() {
                 initial="hidden"
                 animate="visible"
             >
-                "Effortlessly manage and prioritize your tasks with our work manager app. Stay organized, meet deadlines, and collaborate seamlessly with your team."
+                Effortlessly manage and prioritize your tasks with our work manager app. Stay organized, meet deadlines, and collaborate seamlessly with your team.
             </motion.p>
         </motion.div>
     );

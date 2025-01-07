@@ -7,6 +7,7 @@ import React, { useContext, useState } from 'react'
 import { toast } from 'react-toastify'
 import Menu from "../assets/menu.png"
 import Close from "../assets/close.png"
+import Image from 'next/image'
 
 const CustomNavbar = () => {
 
@@ -39,11 +40,23 @@ const CustomNavbar = () => {
                     </h1>
                 </div>
 
-                <div className='h-10 w-10 md:hidden' onClick={toggleMenu}>
+                <div className="h-10 w-10 md:hidden" onClick={toggleMenu}>
                     {menuOpen ? (
-                        <img src={Close.src} alt="Close" />
+                        <Image
+                            src={Close.src}
+                            alt="Close"
+                            width={40}
+                            height={40}
+                            className="h-10 w-10"
+                        />
                     ) : (
-                        <img src={Menu.src} alt="Menu" />
+                        <Image
+                            src={Menu.src}
+                            alt="Menu"
+                            width={40}
+                            height={40}
+                            className="h-10 w-10"
+                        />
                     )}
                 </div>
 

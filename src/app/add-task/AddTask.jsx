@@ -84,7 +84,7 @@ const AddTask = () => {
                     </div>
                     <div className='flex flex-col md:flex-row justify-center items-center md:space-x-6 space-y-3 md:space-y-0 mt-4 space-x-6'>
                         <button type='submit' className='bg-blue-600 py-2 px-4 rounded-lg shadow shadow-white hover:bg-blue-800 w-full md:w-auto'>Add Task</button>
-                        <button type='reset' onClick={handleClear} className='bg-red-500 py-2 px-4 rounded-lg shadow shadow-white hover:bg-red-700 w-full md:w-auto'>Clear Task</button>
+                        <button type='reset' onClick={handleClear} className='bg-red-500 py-2 px-4 rounded-lg shadow shadow-white hover:bg-red-700 w-full md:w-auto'>ClearTask</button>
                     </div>
                 </form>
             </div>
