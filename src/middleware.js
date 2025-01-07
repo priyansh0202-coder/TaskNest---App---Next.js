@@ -14,7 +14,7 @@ export function middleware(request) {
 
     if (userNotAccess) {
         if (authToken) {
-            return NextResponse.redirect(new URL("/", request.url))
+            return NextResponse.redirect(new URL("/profile/user", request.url))
         }
     } else {
         if (!authToken) {
