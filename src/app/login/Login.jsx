@@ -36,7 +36,7 @@ const Login = () => {
                 position: "top-center"
             })
             context.setUser(result.user)
-            router.push("/")
+            router.push("/api/current")
 
         } catch (error) {
             console.log(error)
