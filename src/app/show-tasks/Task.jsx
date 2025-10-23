@@ -5,8 +5,9 @@
 import UserContext from '@/context/userContext'
 import React, { useContext } from 'react'
 import { RxCross1 } from "react-icons/rx"
+import { FiEdit3 } from "react-icons/fi"
 
-const Task = ({ task, deleteTaskParent }) => {
+const Task = ({ task, deleteTaskParent, onEditClick }) => {
     const { user } = useContext(UserContext)
 
     const handleDelete = async (taskId) => {
@@ -53,15 +54,20 @@ const Task = ({ task, deleteTaskParent }) => {
                         </div>
                     </div>
 
-                    {/* Delete Button */}
-                    <button
-                        onClick={() => handleDelete(task._id)}
-                        className='flex-shrink-0 group/btn relative w-10 h-10 rounded-xl bg-gray-100 hover:bg-red-50 border-2 border-gray-200 hover:border-red-300 transition-all duration-300 flex items-center justify-center cursor-pointer'
-                        aria-label="Delete task"
-                    >
-                        <RxCross1 className='text-gray-600 group-hover/btn:text-red-500 transition-colors duration-300' />
-                        <div className='absolute inset-0 rounded-xl bg-red-500/0 group-hover/btn:bg-red-500/5 transition-all duration-300'></div>
-                    </button>
+                    <div className='flex gap-2'>
+                                     <button
+                                            onClick={() => onEditClick(task)}
+                                            className='w-10 h-10 rounded-xl bg-gray-100 hover:bg-blue-50 border-2 border-gray-200 hover:border-blue-300 transition-all flex items-center justify-center'
+                                       >
+                                           <FiEdit3 className='text-gray-600 hover:text-blue-500 text-lg' />
+                                      </button>
+                                      <button
+                                        onClick={() => handleDelete(task._id)}
+                                            className='w-10 h-10 rounded-xl bg-gray-100 hover:bg-red-50 border-2 border-gray-200 hover:border-red-300 transition-all flex items-center justify-center'
+                       >
+                                           <RxCross1 className='text-gray-600 hover:text-red-500 text-lg' />
+                                      </button>
+                                  </div>
                 </div>
 
                 {/* Content Section */}
@@ -105,3 +111,59 @@ const Task = ({ task, deleteTaskParent }) => {
 }
 
 export default Task
+
+
+
+// import UserContext from '@/context/userContext';
+// import React, { useContext } from 'react';
+// import { RxCross1 } from "react-icons/rx";
+// import { FiEdit3 } from "react-icons/fi";
+
+// const Task = ({ task, deleteTaskParent, onEditClick }) => {
+//     const { user } = useContext(UserContext);
+
+//     const handleDelete = async (taskId) => {
+//         deleteTaskParent(taskId);
+//     };
+
+//     const isCompleted = task.status === "completed";
+
+//     return (
+//         <div className={`group relative mt-4 rounded-2xl transition-all duration-300 hover:scale-[1.02] ${isCompleted
+//                 ? "bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200"
+//                 : "bg-gradient-to-br from-white to-gray-50 border-2 border-gray-200"
+//             } shadow-lg hover:shadow-xl`}>
+
+//             <div className='p-6'>
+//                 <div className='flex justify-between items-start gap-4 mb-4'>
+//                     <div className='flex-1'>
+//                         <h1 className='text-xl sm:text-2xl font-bold text-gray-800 leading-tight'>
+//                             {task.title}
+//                         </h1>
+//                     </div>
+
+//                     <div className='flex gap-2'>
+//                         <button
+//                             onClick={() => onEditClick(task)}
+//                             className='w-10 h-10 rounded-xl bg-gray-100 hover:bg-blue-50 border-2 border-gray-200 hover:border-blue-300 transition-all flex items-center justify-center'
+//                         >
+//                             <FiEdit3 className='text-gray-600 hover:text-blue-500 text-lg' />
+//                         </button>
+//                         <button
+//                             onClick={() => handleDelete(task._id)}
+//                             className='w-10 h-10 rounded-xl bg-gray-100 hover:bg-red-50 border-2 border-gray-200 hover:border-red-300 transition-all flex items-center justify-center'
+//                         >
+//                             <RxCross1 className='text-gray-600 hover:text-red-500 text-lg' />
+//                         </button>
+//                     </div>
+//                 </div>
+
+//                 <p className='text-gray-700 text-sm sm:text-base leading-relaxed mb-4'>
+//                     {task.content}
+//                 </p>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default Task;

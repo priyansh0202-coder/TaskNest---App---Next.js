@@ -20,3 +20,10 @@ export const deleteTask = async (taskId) => {
         .then((response) => response.data);
     return result;
 }
+
+export const updateTask = async (taskId, task) => {
+    const result = await httpAxios
+        .put(`/api/tasks/${taskId}`, task)
+        .then((response) => response.data);
+    return result;
+}
