@@ -1,3 +1,4 @@
+"use client"; 
 import localFont from "next/font/local";
 import "./globals.css";
 import CustomNavbar from "@/components/CustomNavbar";
@@ -5,6 +6,7 @@ import Footer from "@/components/Footer";
 import "react-toastify/dist/ReactToastify.css"
 import { ToastContainer } from "react-toastify";
 import UserProvider from "@/context/userProvider";
+import { usePathname } from "next/navigation";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,6 +22,9 @@ const geistMono = localFont({
 
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
+  const isLoginPage = pathname === "/login" || pathname === "/signup";
+
   return (
     <html lang="en">
       <body
@@ -27,9 +32,9 @@ export default function RootLayout({ children }) {
       >
         <UserProvider>
           <ToastContainer position="top-right" autoClose={3000} theme="light" />
-          <CustomNavbar />
-          <div className="mt-2">{children}</div>
-          <Footer />
+        { !isLoginPage && <CustomNavbar />}
+          <div className="">{children}</div>
+          {!isLoginPage && <Footer />}
         </UserProvider>
       </body>
     </html>

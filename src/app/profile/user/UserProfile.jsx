@@ -1,119 +1,75 @@
-"use client"
+"use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function UserProfile() {
-    const containerVariants = {
-        hidden: { opacity: 0, scale: 0.95 },
-        visible: {
-            opacity: 1,
-            scale: 1,
-            transition: {
-                duration: 1.2,
-                ease: "easeInOut",
-            },
-        },
-    };
-
-    const textStretchVariants = {
-        hidden: { scaleX: 0 },
-        visible: {
-            scaleX: 1,
-            transition: {
-                duration: 1.2,
-                ease: "easeInOut",
-            },
-        },
-    };
-
-    const textFadeVariants = {
-        hidden: { y: 50, opacity: 0 },
-        visible: (custom) => ({
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.8,
-                delay: custom * 0.3,
-                ease: "easeOut",
-            },
-        }),
-    };
-
-    const textVariants = {
-        hidden: { y: 50, opacity: 0 },
-        visible: (custom) => ({
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.8,
-                delay: custom * 0.3,
-                ease: "easeOut",
-            },
-        }),
-    };
-
-    const bgVariants = {
-        animate: {
-            x: ["0%", "10%", "-10%", "0%"],
-            scale: [1.1, 1.05, 1.1],
-            transition: {
-                duration: 10,
-                repeat: Infinity,
-                repeatType: "loop",
-                ease: "easeInOut",
-            },
-        },
-    };
-
     return (
-        <motion.div
-            className="relative flex flex-col items-center justify-center h-screen bg-black text-white overflow-hidden"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-        >
-            <motion.div
-                className="absolute inset-0"
-                variants={bgVariants}
-                animate="animate"
-            >
-
-                <Image
-                    src="https://images.pexels.com/photos/2538089/pexels-photo-2538089.jpeg"
-                    alt="Background"
-                    className="w-full h-full object-cover opacity-30"
-                    layout="fill"
-                    objectFit="cover"
-                    quality={100}
-                />
-
-            </motion.div>
-
+        <div className="relative min-h-screen flex flex-col  justify-center items-center bg-gradient-to-br from-orange-100 via-white to-blue-100 text-gray-800 px-4">
+            {/* Animated header */}
             <motion.h1
-                className="relative text-6xl font-bold uppercase text-center tracking-wide italic border-black border-2 p-2 rounded-s-sm"
-                animate={{
-                    scale: [1, 1.1, 1],
-                }}
-                transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                }}
-                variants={textVariants}
-                custom={1}
+                className="text-5xl md:text-6xl font-extrabold mb-6 text-center bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: -40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
             >
                 Welcome to Work Manager
-            </motion.h1 >
+            </motion.h1>
 
+            {/* Subheading */}
             <motion.p
-                className="relative text-xl mt-4 text-gray-300 text-center max-w-2xl"
-                variants={textFadeVariants}
-                custom={2}
-                initial="hidden"
-                animate="visible"
+                className="text-lg md:text-xl text-gray-600 text-center max-w-2xl mb-10"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.2 }}
             >
-                Effortlessly manage and prioritize your tasks with our work manager app. Stay organized, meet deadlines, and collaborate seamlessly with your team.
+                Manage your daily tasks efficiently, stay productive, and keep everything
+                organized — all in one simple and elegant workspace.
             </motion.p>
-        </motion.div>
+
+            {/* Illustration and content card */}
+            <motion.div
+                className="bg-white/90 backdrop-blur-md shadow-lg rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 max-w-5xl w-full"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.3 }}
+            >
+                <Image
+                    src="https://cdn-icons-png.flaticon.com/512/4712/4712139.png"
+                    alt="Work Illustration"
+                    width={250}
+                    height={250}
+                    className="rounded-xl"
+                />
+
+                <div className="text-center md:text-left">
+                    <h2 className="text-2xl font-semibold text-gray-800 mb-3">
+                        Organize Smarter. Work Better.
+                    </h2>
+                    <p className="text-gray-600 mb-5">
+                        Track your progress, set deadlines, and boost your productivity with
+                        a user-friendly interface designed to help you focus on what truly
+                        matters.
+                    </p>
+
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full shadow-md transition-all"
+                    >
+                        Get Started
+                    </motion.button>
+                </div>
+            </motion.div>
+
+            {/* Decorative footer text */}
+            {/* <motion.footer
+                className="mt-16 text-sm text-gray-500"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+            >
+                © {new Date().getFullYear()} Work Manager. All rights reserved.
+            </motion.footer> */}
+        </div>
     );
 }
